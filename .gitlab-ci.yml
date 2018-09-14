@@ -5,7 +5,7 @@ services:
 
 deploying:
   script:
-    - docker login --password R9dmzezZyZMmut9tHS6GCHXDwADqFFKK --username max hub.maxhenkel.de
+    - docker login --password $docker_hub_password --username $docker_hub_username hub.maxhenkel.de
     - docker build -t "hub.maxhenkel.de/teamspeak-proxy" . < Dockerfile
     - docker push hub.maxhenkel.de/teamspeak-proxy
   only:
