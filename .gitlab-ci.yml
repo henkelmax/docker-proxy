@@ -1,5 +1,8 @@
 image: docker:stable
 
+services:
+  - docker:dind
+
 deploying:
   script:
     - docker login --password R9dmzezZyZMmut9tHS6GCHXDwADqFFKK --username max hub.maxhenkel.de
@@ -7,4 +10,3 @@ deploying:
     - docker push hub.maxhenkel.de/docker-proxy
   only:
     - master
-    
