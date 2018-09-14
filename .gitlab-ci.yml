@@ -7,3 +7,4 @@ deploying:
     - docker push hub.maxhenkel.de/docker-proxy
   only:
     - master
+    
