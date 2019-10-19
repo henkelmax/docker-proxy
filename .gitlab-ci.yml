@@ -3,10 +3,14 @@ image: docker:stable
 services:
   - docker:dind
 
+variables:
+  IMAGE_TAG: $CI_REGISTRY_IMAGE:latest
+
 deploying:
+  before_script:
+    - docker login --password $CI_REGISTRY_PASSWORD --username $CI_REGISTRY_USER $CI_REGISTRY
   script:
-    - docker login --password $docker_hub_password --username $docker_hub_username hub.maxhenkel.de
-    - docker build -t "hub.maxhenkel.de/teamspeak-proxy" . < Dockerfile
-    - docker push hub.maxhenkel.de/teamspeak-proxy
+    - docker build --pull -t $IMAGE_TAG .
+    - docker push $IMAGE_TAG
   only:
     - master
