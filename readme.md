@@ -1,28 +1,26 @@
-# Teamspeak/UDP Proxy
+# TCP/UDP Proxy Dockerized ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/henkelmax/docker-proxy/Build) ![GitHub issues](https://img.shields.io/github/issues-raw/henkelmax/docker-proxy) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/henkelmax/docker-proxy?include_prereleases) ![](https://img.shields.io/docker/pulls/henkelmax/proxy)
 
-## Installation with Docker
+A simple Docker container that forwards incoming TCP or UDP traffic to a specific IP.
 
-### Image Name
+> This container uses [MengRao/TCP-UDP-Proxy](https://github.com/MengRao/TCP-UDP-Proxy).
 
-    hub.maxhenkel.de/teamspeak-proxy
+## Useful Links
 
-### Environment Variables
+- [Docker Image](https://hub.docker.com/r/henkelmax/proxy)
+- [Proxy](https://github.com/MengRao/TCP-UDP-Proxy)
 
-`LOCAL_PORT` The local port where the incoming packets come to
+## Environment Variables
+
+`LOCAL_PORT` The local port where the incoming packets arrive at
 
 `REMOTE_PORT` The port the proxy sends the packets to
 
 `REMOTE_IP` The IP the proxy sends the packets to
 
-#### Example
-    
-    127.0.0.1
-
 `PROTOCOL` The Protocol (Either `udp` or `tcp`)
 
-`PORT` The port the WebHook Server should run on
+## Example
 
-
-[//]: # ( Proxy Repository https://github.com/MengRao/TCP-UDP-Proxy )
-[//]: # ( Install libboost sudo apt-get install libboost-all-dev )
-[//]: # ( Libboost path /usr/lib/x86_64-linux-gnu/ [libboost] )
+```sh
+docker run -e LOCAL_PORT=10000 -e REMOTE_PORT=10000 -e REMOTE_IP=127.0.0.1 -e PROTOCOL=udp henkelmax/proxy
+```
